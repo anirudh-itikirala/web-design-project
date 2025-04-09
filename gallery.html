@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My App - Gallery</title>
+  <style>
+    /* Global Styles (matching index.html) */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #D3D3D3;
+      color: #001F3F;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #001F3F;
+      padding: 20px;
+      text-align: center;
+    }
+    header img {
+      width: 100px;
+      vertical-align: middle;
+    }
+    nav {
+      margin-top: 10px;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: inline-flex;
+    }
+    nav ul li {
+      margin: 0 15px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #634E99;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h1, h2, h3 {
+      color: #634E99;
+    }
+    /* Pricing Plans Section */
+    .plan-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin: 20px 0;
+    }
+    .plan-box {
+      background-color: #F0F0F0;
+      border: 1px solid #634E99;
+      border-radius: 8px;
+      width: 28%;
+      margin: 10px 0;
+      padding: 15px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .plan-box h3 {
+      margin-top: 0;
+    }
+    .plan-box p {
+      margin: 8px 0;
+    }
+    /* Or divider and sign in */
+    .or-divider {
+      margin: 20px 0;
+      font-weight: bold;
+    }
+    .signin-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #634E99;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    /* Modal Popup Styles */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #634E99;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 400px;
+      position: relative;
+      text-align: center;
+    }
+    .modal-content h2 {
+      margin-top: 0;
+    }
+    .modal-content button {
+      margin: 10px 5px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .google-btn {
+      background-color: #DB4437;
+      color: #fff;
+    }
+    .phone-btn {
+      background-color: #4285F4;
+      color: #fff;
+    }
+    .close {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #001F3F;
+    }
+    footer {
+      background-color: #001F3F;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="weight.png" alt="Logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">About/Contact</a></li>
+        <li><a href="custom.html">Admin / Extras</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="container">
+    <h1>Get Started With Us</h1>
+    <p>Choose one of these three plans:</p>
+    
+    <div class="plan-container">
+      <div class="plan-box">
+        <h3>Basic Plan</h3>
+        <p>Monthly: $10.99</p>
+        <p>Annual: $100</p>
+        <p>Lifetime: $199.99</p>
+      </div>
+      <div class="plan-box">
+        <h3>Standard Plan</h3>
+        <p>Monthly: $19.99</p>
+        <p>Annual: $199.99</p>
+        <p>Lifetime: $399.99</p>
+      </div>
+      <div class="plan-box">
+        <h3>Premium Plan</h3>
+        <p>Monthly: $29.99</p>
+        <p>Annual: $299.99</p>
+        <p>Lifetime: $399.99</p>
+      </div>
+    </div>
+    
+    <div class="or-divider">Or</div>
+    <a class="signin-link" id="openModal">Sign In</a>
+  </div>
+  
+  <!-- Modal Popup -->
+  <div id="signinModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2>User Sign In</h2>
+      <button class="google-btn">Sign in with Google</button>
+      <button class="phone-btn">Sign in with Phone Number</button>
+    </div>
+  </div>
+  
+  <footer>
+    &copy; 2025 ABC Fitness Zone. All rights reserved.
+  </footer>
+  
+  <!-- JavaScript to handle modal popup -->
+  <script>
+    // Get modal element and open/close triggers
+    var modal = document.getElementById('signinModal');
+    var openModalBtn = document.getElementById('openModal');
+    var closeModalBtn = document.getElementById('closeModal');
+    
+    // Open the modal when the sign in link is clicked
+    openModalBtn.addEventListener('click', function(event) {
+      event.preventDefault();
+      modal.style.display = 'block';
+    });
+    
+    // Close the modal when the close button is clicked
+    closeModalBtn.addEventListener('click', function() {
+      modal.style.display = 'none';
+    });
+    
+    // Close the modal if the user clicks outside the modal content
+    window.addEventListener('click', function(event) {
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

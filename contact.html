@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My App - About/Contact</title>
+  <style>
+    /* Global Styles (same as above) */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #D3D3D3;
+      color: #001F3F;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #001F3F;
+      padding: 20px;
+      text-align: center;
+    }
+    header img {
+      width: 100px;
+      vertical-align: middle;
+    }
+    nav {
+      margin-top: 10px;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: inline-flex;
+    }
+    nav ul li {
+      margin: 0 15px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #634E99;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #634E99;
+      text-align: center;
+    }
+    form {
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    form input[type="text"],
+    form input[type="email"],
+    form textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    form input[type="submit"] {
+      background-color: #634E99;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: block;
+      margin: auto;
+    }
+    footer {
+      background-color: #001F3F;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="weight.png" alt="Logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">About/Contact</a></li>
+        <li><a href="custom.html">Admin / Extras</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="container">
+    <h1>About &amp; Contact</h1>
+    <p>Learn more about our platform and send us your feedback or inquiries.</p>
+    <form action="#" method="post">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required>
+      
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+      
+      <input type="submit" value="Send Message">
+    </form>
+  </div>
+  
+  <footer>
+    &copy; 2025 ABC Fitness Zone. All rights reserved.
+  </footer>
+</body>
+</html>
